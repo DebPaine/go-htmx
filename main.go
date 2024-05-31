@@ -39,8 +39,7 @@ func getFilms(w http.ResponseWriter, r* http.Request){
 		return
 	}
 	
-	err = templ.Execute(w, films)
-	if err != nil{
+	if err := templ.Execute(w, films); err != nil{
 		http.Error(w, err.Error(), http.StatusInternalServerError)
 		return
 	}
@@ -58,8 +57,7 @@ func helloWorldTemplate(w http.ResponseWriter, r* http.Request){
 		return
 	}
 
-	err = templ.Execute(w, nil)
-	if err != nil{
+	if err := templ.Execute(w, nil); err != nil{
 		http.Error(w, err.Error(), http.StatusInternalServerError)
 	}
 }
