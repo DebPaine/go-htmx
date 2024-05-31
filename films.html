@@ -9,6 +9,11 @@
     <link rel="stylesheet" href="" />
   </head>
   <body>
-    <h1>Hello World!</h1>
+    <h1>Films</h1>
+    <ul>
+      {{range .films}}
+      <li>{{.Title}} - {{.Year}}</li>
+      {{end}}
+    </ul>
   </body>
 </html>
