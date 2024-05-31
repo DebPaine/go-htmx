@@ -7,6 +7,13 @@ import (
 	"net/http"
 )
 
+type Film struct{
+	Title string
+	Year int
+}
+
+var films []Film
+
 func main() {
 	fmt.Println("Hello World!")
 
@@ -19,6 +26,15 @@ func main() {
 	}
 }
 
+func getFilms(w http.ResponseWriter, r* http.Request){
+	addFilms(Film{"dsfasdf", 12312})
+	fmt.Fprint(w, films)
+	fmt.Fprint(w, r.Method)
+}
+
+func addFilms(film Film){
+	films = append(films, film)
+}
 func helloWorld(w http.ResponseWriter, r* http.Request){
 	fmt.Fprint(w, "Hello World!\n")
 	fmt.Fprint(w, r.Method)
@@ -36,3 +52,4 @@ func helloWorldTemplate(w http.ResponseWriter, r* http.Request){
 		http.Error(w, err.Error(), http.StatusInternalServerError)
 	}
 }
+
